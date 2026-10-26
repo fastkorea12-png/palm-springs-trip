@@ -1,0 +1,2113 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>팜스프링스 숙소 비교</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Mid-Century Modern Palm Springs Editorial Palette */
+        --bg: #faf5ee;
+        --bg-elevated: #fffdfa;
+        --bg-muted: #f2e8da;
+        --bg-blush: #fae7e3;
+        --ink: #29211c;
+        --ink-soft: #5a4d43;
+        --ink-muted: #867669;
+        --line: #e5d8c7;
+        --line-strong: #d4c2ac;
+
+        /* Sunset Orange / Terracotta */
+        --sunset: #d46542;
+        --sunset-soft: #fce8df;
+        --sunset-ink: #8f371b;
+
+        /* Pastel Desert Pink / Rose */
+        --pink: #e5989b;
+        --pink-soft: #fbe9ea;
+        --pink-ink: #843b40;
+
+        /* Mid-Century Palm Mint */
+        --mint: #4a8572;
+        --mint-soft: #dff0ea;
+        --mint-ink: #225041;
+
+        /* Sand Beige Accent */
+        --sand: #d8a465;
+        --sand-soft: #f6ead6;
+        --sand-ink: #704e23;
+
+        --shadow-sm: 0 6px 20px rgba(41, 33, 28, 0.05);
+        --shadow-md: 0 16px 40px rgba(41, 33, 28, 0.08);
+        --shadow-lg: 0 24px 56px rgba(41, 33, 28, 0.12);
+
+        --radius-xl: 24px;
+        --radius-lg: 18px;
+        --radius-md: 14px;
+        --radius-sm: 8px;
+
+        --font-serif: "Playfair Display", "Noto Serif KR", Georgia, serif;
+        --font-sans: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #171412;
+          --bg-elevated: #221d1a;
+          --bg-muted: #2c2521;
+          --bg-blush: rgba(229, 152, 155, 0.12);
+          --ink: #f5ede3;
+          --ink-soft: #d1c4b6;
+          --ink-muted: #9f9081;
+          --line: #382f29;
+          --line-strong: #4c4038;
+
+          --sunset: #eb8261;
+          --sunset-soft: rgba(235, 130, 97, 0.18);
+          --sunset-ink: #f9bca8;
+
+          --pink: #eba9ac;
+          --pink-soft: rgba(235, 169, 172, 0.16);
+          --pink-ink: #f7cfd1;
+
+          --mint: #7ab8a3;
+          --mint-soft: rgba(122, 184, 163, 0.17);
+          --mint-ink: #bce3d6;
+
+          --sand: #e5b578;
+          --sand-soft: rgba(229, 181, 120, 0.16);
+          --sand-ink: #f3d5ab;
+
+          --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.3);
+          --shadow-md: 0 18px 42px rgba(0, 0, 0, 0.42);
+          --shadow-lg: 0 26px 60px rgba(0, 0, 0, 0.52);
+        }
+      }
+
+      :root[data-theme="dark"] {
+        --bg: #171412;
+        --bg-elevated: #221d1a;
+        --bg-muted: #2c2521;
+        --bg-blush: rgba(229, 152, 155, 0.12);
+        --ink: #f5ede3;
+        --ink-soft: #d1c4b6;
+        --ink-muted: #9f9081;
+        --line: #382f29;
+        --line-strong: #4c4038;
+
+        --sunset: #eb8261;
+        --sunset-soft: rgba(235, 130, 97, 0.18);
+        --sunset-ink: #f9bca8;
+
+        --pink: #eba9ac;
+        --pink-soft: rgba(235, 169, 172, 0.16);
+        --pink-ink: #f7cfd1;
+
+        --mint: #7ab8a3;
+        --mint-soft: rgba(122, 184, 163, 0.17);
+        --mint-ink: #bce3d6;
+
+        --sand: #e5b578;
+        --sand-soft: rgba(229, 181, 120, 0.16);
+        --sand-ink: #f3d5ab;
+
+        --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 18px 42px rgba(0, 0, 0, 0.42);
+        --shadow-lg: 0 26px 60px rgba(0, 0, 0, 0.52);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        line-height: 1.65;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        overflow-x: hidden;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: var(--sunset);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      a:hover,
+      a:focus-visible {
+        text-decoration: underline;
+      }
+
+      /* Full-Bleed Editorial Hero */
+      .hero {
+        position: relative;
+        width: 100%;
+        min-height: clamp(460px, 74vh, 680px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        background: #23333d;
+        color: #fffaf3;
+      }
+
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .hero-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 38%;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(20, 28, 36, 0.42) 0%,
+            rgba(38, 28, 24, 0.14) 38%,
+            rgba(43, 27, 20, 0.62) 74%,
+            rgba(30, 19, 15, 0.88) 100%
+          ),
+          radial-gradient(circle at 85% 20%, rgba(235, 148, 118, 0.22), transparent 52%);
+      }
+
+      .hero-topbar {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 20px 16px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      @media (min-width: 720px) {
+        .hero-topbar {
+          padding: 28px 32px 0;
+        }
+      }
+
+      .magazine-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-serif);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #fffaf3;
+        background: rgba(255, 250, 243, 0.16);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 250, 243, 0.28);
+        padding: 6px 11px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      @media (min-width: 720px) {
+        .magazine-tag {
+          gap: 8px;
+          font-size: 0.76rem;
+          letter-spacing: 0.14em;
+          padding: 6px 13px;
+        }
+      }
+
+      .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(25, 20, 17, 0.48);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: #fffaf3;
+        border: 1px solid rgba(255, 250, 243, 0.32);
+        border-radius: 999px;
+        padding: 7px 14px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(25, 20, 17, 0.72);
+      }
+
+      .theme-toggle:focus-visible {
+        outline: 2px solid #fffaf3;
+        outline-offset: 2px;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 48px 16px 36px;
+      }
+
+      @media (min-width: 720px) {
+        .hero-content {
+          padding: 64px 32px 52px;
+        }
+      }
+
+      .hero-kicker {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(0.98rem, 2.2vw, 1.2rem);
+        color: #fbd8cc;
+        margin: 0 0 10px;
+        letter-spacing: 0.02em;
+      }
+
+      .hero h1 {
+        margin: 0 0 14px;
+        font-family: "Noto Serif KR", var(--font-serif);
+        font-size: clamp(2rem, 6vw, 3.45rem);
+        font-weight: 700;
+        line-height: 1.18;
+        letter-spacing: -0.025em;
+        color: #fffdf9;
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+      }
+
+      .hero .subtitle {
+        margin: 0 0 24px;
+        font-size: clamp(0.95rem, 2.2vw, 1.12rem);
+        font-weight: 500;
+        color: rgba(255, 250, 243, 0.92);
+        letter-spacing: 0.01em;
+      }
+
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .hero-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #fffaf3;
+        background: rgba(255, 250, 243, 0.14);
+        border: 1px solid rgba(255, 250, 243, 0.26);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        text-decoration: none;
+      }
+
+      .hero-pill:hover {
+        background: rgba(255, 250, 243, 0.26);
+        text-decoration: none;
+      }
+
+      /* Decorative Mid-Century Color Ribbon under Hero */
+      .midcentury-stripe {
+        height: 6px;
+        width: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--pink) 0%,
+          var(--pink) 25%,
+          var(--sunset) 25%,
+          var(--sunset) 50%,
+          var(--sand) 50%,
+          var(--sand) 75%,
+          var(--mint) 75%,
+          var(--mint) 100%
+        );
+      }
+
+      /* Main Editorial Container — 16px padding at 375px */
+      .container {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 40px 16px 72px;
+      }
+
+      @media (min-width: 720px) {
+        .container {
+          padding: 64px 32px 96px;
+        }
+      }
+
+      /* Editorial Section Headers */
+      .section {
+        margin-bottom: 64px;
+      }
+
+      @media (min-width: 720px) {
+        .section {
+          margin-bottom: 84px;
+        }
+      }
+
+      .section:last-child {
+        margin-bottom: 0;
+      }
+
+      .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-serif);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--sunset);
+        margin-bottom: 8px;
+      }
+
+      .section-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 1.5px;
+        background: currentColor;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+        margin-bottom: 24px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-title {
+        margin: 0;
+        font-family: "Noto Serif KR", var(--font-serif);
+        font-size: clamp(1.38rem, 3.4vw, 1.88rem);
+        font-weight: 700;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+
+      .section-note {
+        margin: 0;
+        font-size: 0.88rem;
+        color: var(--ink-muted);
+      }
+
+      /* Scroll Reveal Animation (respecting prefers-reduced-motion) */
+      html.reveal-ready .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      html.reveal-ready .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html.reveal-ready .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      /* Shared Image Hover Zoom */
+      .media-zoom {
+        overflow: hidden;
+        background: var(--bg-muted);
+      }
+
+      .media-zoom img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+        .card-hover:hover .media-zoom img {
+          transform: scale(1.045);
+        }
+      }
+
+      /* 2. Recommended Route — Photo Timeline */
+      .route-showcase {
+        background: linear-gradient(155deg, var(--bg-elevated) 0%, var(--bg-blush) 100%);
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius-xl);
+        padding: 20px 16px;
+        box-shadow: var(--shadow-md);
+      }
+
+      @media (min-width: 720px) {
+        .route-showcase {
+          padding: 32px;
+        }
+      }
+
+      .featured-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      .badge-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--sunset);
+        color: #fffaf5;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 999px;
+        letter-spacing: 0.01em;
+      }
+
+      .drive-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--mint-ink);
+        background: var(--mint-soft);
+        padding: 6px 13px;
+        border-radius: 999px;
+      }
+
+      .route-timeline {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-items: stretch;
+        margin-bottom: 24px;
+      }
+
+      @media (min-width: 820px) {
+        .route-timeline {
+          grid-template-columns: 1fr auto 1fr;
+          gap: 18px;
+          align-items: center;
+        }
+      }
+
+      .timeline-card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .timeline-photo {
+        position: relative;
+        aspect-ratio: 16 / 10;
+      }
+
+      .timeline-day-chip {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(25, 20, 17, 0.72);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #fffaf3;
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 5px 11px;
+        border-radius: 999px;
+        letter-spacing: 0.02em;
+      }
+
+      .timeline-body {
+        padding: 18px 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+      }
+
+      .step-date {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--sunset);
+        letter-spacing: 0.01em;
+      }
+
+      .step-hotel {
+        font-family: var(--font-serif);
+        font-size: 1.32rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--ink);
+        line-height: 1.25;
+      }
+
+      .step-desc {
+        margin: 2px 0 0;
+        font-size: 0.92rem;
+        color: var(--ink-soft);
+      }
+
+      .timeline-connector {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 4px 0;
+      }
+
+      .connector-line {
+        width: 2px;
+        height: 18px;
+        background: repeating-linear-gradient(
+          to bottom,
+          var(--sunset) 0,
+          var(--sunset) 4px,
+          transparent 4px,
+          transparent 8px
+        );
+      }
+
+      @media (min-width: 820px) {
+        .connector-line {
+          width: 26px;
+          height: 2px;
+          background: repeating-linear-gradient(
+            to right,
+            var(--sunset) 0,
+            var(--sunset) 4px,
+            transparent 4px,
+            transparent 8px
+          );
+        }
+        .timeline-connector {
+          flex-direction: row;
+          padding: 0 2px;
+        }
+      }
+
+      .connector-badge {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        background: var(--bg-elevated);
+        border: 1.5px solid var(--sunset);
+        color: var(--sunset-ink);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .route-summary-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px 16px;
+        padding: 16px 18px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+      }
+
+      .route-total {
+        font-size: 0.96rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .route-total strong {
+        font-family: var(--font-serif);
+        color: var(--sunset);
+        font-size: 1.24rem;
+        font-weight: 700;
+        margin: 0 2px;
+      }
+
+      /* 3. Stay Filter + Editorial Hotel Cards + Summary Table */
+      .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      .filter-btn {
+        background: var(--bg-elevated);
+        color: var(--ink-soft);
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-size: 0.84rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+        transition: all 0.2s ease;
+      }
+
+      .filter-btn:hover {
+        border-color: var(--mint);
+        color: var(--ink);
+      }
+
+      .filter-btn[aria-pressed="true"] {
+        background: var(--mint);
+        color: #fffaf5;
+        border-color: var(--mint);
+        box-shadow: 0 4px 14px rgba(74, 133, 114, 0.28);
+      }
+
+      .stays-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-bottom: 36px;
+      }
+
+      @media (min-width: 720px) {
+        .stays-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 26px;
+        }
+      }
+
+      .stay-card {
+        position: relative;
+        background: var(--bg-elevated);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+
+      .stay-card:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--line-strong);
+      }
+
+      .stay-card-media {
+        position: relative;
+        aspect-ratio: 16 / 10;
+      }
+
+      .stay-area-overlay {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        z-index: 2;
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 5px 11px;
+        border-radius: 999px;
+        background: rgba(250, 245, 238, 0.92);
+        color: #225041;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+
+      .stay-area-overlay.downtown {
+        background: rgba(253, 236, 226, 0.94);
+        color: #8f371b;
+      }
+
+      /* "지인 추천" Ribbon */
+      .rec-ribbon {
+        position: absolute;
+        top: 14px;
+        right: -1px;
+        z-index: 2;
+        background: linear-gradient(135deg, var(--sunset) 0%, #bf4c2a 100%);
+        color: #fffaf5;
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 6px 14px 6px 12px;
+        border-radius: 999px 0 0 999px;
+        box-shadow: 0 6px 16px rgba(143, 55, 27, 0.32);
+        letter-spacing: 0.02em;
+      }
+
+      .stay-card-body {
+        padding: 20px 18px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        flex: 1;
+      }
+
+      @media (min-width: 720px) {
+        .stay-card-body {
+          padding: 22px 24px 24px;
+        }
+      }
+
+      .stay-card-top {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .stay-card-title {
+        margin: 0;
+        font-family: var(--font-serif);
+        font-size: 1.35rem;
+        font-weight: 700;
+        line-height: 1.25;
+        color: var(--ink);
+      }
+
+      .stay-price-box {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px 10px;
+        padding: 10px 13px;
+        background: var(--bg-muted);
+        border-radius: var(--radius-sm);
+      }
+
+      .stay-price-figure {
+        font-family: var(--font-serif);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--sunset-ink);
+      }
+
+      .stay-price-unit {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+      }
+
+      .stay-price-example {
+        font-size: 0.8rem;
+        color: var(--ink-muted);
+      }
+
+      .chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .feature-chip {
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 5px 11px;
+        border-radius: 999px;
+        background: var(--sand-soft);
+        color: var(--sand-ink);
+        border: 1px solid var(--line);
+      }
+
+      .feature-chip.mint {
+        background: var(--mint-soft);
+        color: var(--mint-ink);
+      }
+
+      .feature-chip.pink {
+        background: var(--pink-soft);
+        color: var(--pink-ink);
+      }
+
+      /* Summary Comparison Subheading & Responsive Table */
+      .sub-table-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 12px;
+      }
+
+      .sub-table-heading h3 {
+        margin: 0;
+        font-size: 1.02rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .table-wrap {
+        background: var(--bg-elevated);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .stay-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+
+      .stay-table th {
+        background: var(--bg-muted);
+        color: var(--ink-soft);
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .stay-table td {
+        padding: 15px 18px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+        font-size: 0.92rem;
+      }
+
+      .stay-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .stay-name {
+        font-weight: 700;
+        font-size: 0.96rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .rec-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        background: var(--sunset-soft);
+        color: var(--sunset-ink);
+        border: 1px solid var(--sunset);
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      .area-tag {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 6px;
+        background: var(--mint-soft);
+        color: var(--mint-ink);
+      }
+
+      .area-tag.downtown {
+        background: var(--sand-soft);
+        color: var(--sand-ink);
+      }
+
+      .price-main {
+        font-weight: 700;
+        color: var(--ink);
+        display: block;
+      }
+
+      .price-sub {
+        font-size: 0.8rem;
+        color: var(--ink-muted);
+        display: block;
+        margin-top: 2px;
+      }
+
+      /* Mobile Stack Transformation for Table — Zero Horizontal Scroll */
+      @media (max-width: 719px) {
+        .table-wrap {
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          overflow: visible;
+        }
+
+        .stay-table,
+        .stay-table tbody {
+          display: block;
+          width: 100%;
+        }
+
+        .stay-table thead {
+          display: none;
+        }
+
+        .stay-table tr {
+          display: block;
+          background: var(--bg-elevated);
+          border: 1px solid var(--line);
+          border-radius: var(--radius-md);
+          padding: 14px 16px;
+          margin-bottom: 12px;
+          box-shadow: var(--shadow-sm);
+        }
+
+        .stay-table tr:last-child {
+          margin-bottom: 0;
+        }
+
+        .stay-table td {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 8px 0;
+          border-bottom: 1px dashed var(--line);
+          font-size: 0.88rem;
+        }
+
+        .stay-table td:first-child {
+          display: block;
+          padding-top: 0;
+          padding-bottom: 10px;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .stay-table td:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        .stay-table td::before {
+          content: attr(data-label);
+          font-size: 0.78rem;
+          font-weight: 700;
+          color: var(--ink-muted);
+          flex: 0 0 72px;
+        }
+
+        .stay-table td:first-child::before {
+          display: none;
+        }
+
+        .stay-table td > div {
+          text-align: right;
+          flex: 1;
+        }
+
+        .stay-table td:last-child > div {
+          text-align: left;
+        }
+      }
+
+      /* 4. Alternative Routes */
+      .alt-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      @media (min-width: 720px) {
+        .alt-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 22px;
+        }
+      }
+
+      .alt-card {
+        position: relative;
+        background: var(--bg-elevated);
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--mint);
+        border-radius: var(--radius-lg);
+        padding: 22px 20px;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .alt-card.alt-budget {
+        border-top-color: var(--sand);
+      }
+
+      .alt-label {
+        display: inline-block;
+        align-self: flex-start;
+        font-size: 0.76rem;
+        font-weight: 700;
+        color: var(--mint-ink);
+        background: var(--mint-soft);
+        padding: 4px 11px;
+        border-radius: 999px;
+        margin-bottom: 10px;
+      }
+
+      .alt-card.alt-budget .alt-label {
+        color: var(--sand-ink);
+        background: var(--sand-soft);
+      }
+
+      .alt-card h3 {
+        margin: 0 0 8px;
+        font-family: "Noto Serif KR", var(--font-serif);
+        font-size: 1.14rem;
+        line-height: 1.35;
+      }
+
+      .alt-card p {
+        margin: 0 0 16px;
+        font-size: 0.92rem;
+        color: var(--ink-soft);
+      }
+
+      .alt-price {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--sunset-ink);
+        padding-top: 12px;
+        border-top: 1px dashed var(--line-strong);
+      }
+
+      /* 5. Curated Spots — Editorial Photo Gallery Grid (1 col mobile, 2-3 cols desktop) */
+      .spots-gallery {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      @media (min-width: 640px) {
+        .spots-gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 960px) {
+        .spots-gallery {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+      }
+
+      .spot-card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (min-width: 640px) and (max-width: 959px) {
+        .spot-card.spot-featured {
+          grid-column: 1 / -1;
+          display: grid;
+          grid-template-columns: 1.1fr 1fr;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .spot-card.spot-featured {
+          grid-column: span 2;
+          display: grid;
+          grid-template-columns: 1.15fr 1fr;
+        }
+      }
+
+      .spot-media {
+        position: relative;
+        aspect-ratio: 4 / 3;
+      }
+
+      @media (min-width: 640px) {
+        .spot-card.spot-featured .spot-media {
+          aspect-ratio: auto;
+          min-height: 240px;
+        }
+      }
+
+      .spot-category-tag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 2;
+        font-size: 0.74rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(25, 20, 17, 0.68);
+        color: #fffaf3;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+
+      .spot-body {
+        padding: 18px 18px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .spot-body h3 {
+        margin: 0;
+        font-family: "Noto Serif KR", var(--font-serif);
+        font-size: 1.08rem;
+        line-height: 1.35;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .spot-body p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--ink-soft);
+      }
+
+      /* 6. Cautions */
+      .caution-box {
+        background: var(--sunset-soft);
+        border: 1px solid var(--sunset);
+        border-radius: var(--radius-lg);
+        padding: 20px 20px;
+      }
+
+      @media (min-width: 720px) {
+        .caution-box {
+          padding: 24px 28px;
+        }
+      }
+
+      .caution-list {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 0.92rem;
+        color: var(--ink);
+      }
+
+      .caution-list li + li {
+        margin-top: 8px;
+      }
+
+      /* 7. Sources & Photo Credits */
+      .sources-box {
+        background: var(--bg-elevated);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 20px 18px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      @media (min-width: 720px) {
+        .sources-box {
+          padding: 26px 28px;
+        }
+      }
+
+      .sources-subhead {
+        margin: 0 0 12px;
+        font-family: "Noto Serif KR", var(--font-serif);
+        font-size: 1.04rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .sources-divider {
+        border: 0;
+        border-top: 1px dashed var(--line-strong);
+        margin: 22px 0;
+      }
+
+      .sources-list {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 0.82rem;
+        color: var(--ink-soft);
+      }
+
+      .sources-list li + li {
+        margin-top: 8px;
+      }
+
+      .sources-list a {
+        word-break: break-all;
+      }
+
+      .hidden-item {
+        display: none !important;
+      }
+    </style>
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("reveal-ready");
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 1. 풀블리드 히어로 -->
+    <header class="hero">
+      <div class="hero-media">
+        <img
+          src="images/hero.jpg"
+          alt="샌하신토 산맥과 야자수가 어우러진 팜스프링스 풍경"
+          width="1296"
+          height="864"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-topbar">
+        <span class="magazine-tag">Palm Springs · Stay Issue</span>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="테마 전환">
+          🌓 화면 모드
+        </button>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-kicker">Mid-Century Desert Escape</p>
+        <h1>팜스프링스 11월 숙소 비교</h1>
+        <p class="subtitle">11/22(일)–25(수) · 2인 · 추수감사절(11/26) 직전</p>
+        <nav class="hero-pills" aria-label="섹션 바로가기">
+          <a class="hero-pill" href="#sec-recommended">✨ 추천 동선</a>
+          <a class="hero-pill" href="#sec-comparison">🏨 숙소 후보 4곳</a>
+          <a class="hero-pill" href="#sec-spots">📸 추천 스팟</a>
+        </nav>
+      </div>
+    </header>
+    <div class="midcentury-stripe" aria-hidden="true"></div>
+
+    <div class="container">
+      <main>
+        <!-- 2. 추천 동선 카드 (사진 타임라인) -->
+        <section class="section reveal" aria-labelledby="sec-recommended">
+          <span class="section-eyebrow">01 · Recommended Itinerary</span>
+          <div class="section-header">
+            <h2 class="section-title" id="sec-recommended">✨ 추천 동선 (온천 2박 + 다운타운 1박)</h2>
+            <p class="section-note">휴식과 시내 구경을 모두 챙기는 균형 일정</p>
+          </div>
+
+          <div class="route-showcase">
+            <div class="featured-badge-row">
+              <span class="badge-primary">⭐ 가장 추천하는 3박 조합</span>
+              <span class="drive-pill">🚗 두 지역은 차로 약 20분</span>
+            </div>
+
+            <div class="route-timeline">
+              <article class="timeline-card card-hover">
+                <div class="timeline-photo media-zoom">
+                  <img
+                    src="images/azure-oasis.jpg"
+                    alt="Azure Palm Hot Springs 야외 미네랄 온천 욕조와 사막 정원"
+                    width="1200"
+                    height="853"
+                    loading="lazy"
+                  />
+                  <span class="timeline-day-chip">1–2일차 · 온천 휴식</span>
+                </div>
+                <div class="timeline-body">
+                  <div class="step-date">11/22(일)–24(화) · 2박</div>
+                  <h3 class="step-hotel">Azure Palm Hot Springs</h3>
+                  <p class="step-desc">♨️ Desert Hot Springs · 온천 휴식</p>
+                </div>
+              </article>
+
+              <div class="timeline-connector" aria-label="이동 거리 차로 약 20분">
+                <span class="connector-line" aria-hidden="true"></span>
+                <span class="connector-badge">🚗 차로 약 20분</span>
+                <span class="connector-line" aria-hidden="true"></span>
+              </div>
+
+              <article class="timeline-card card-hover">
+                <div class="timeline-photo media-zoom">
+                  <img
+                    src="images/thompson-lobby.jpg"
+                    alt="Thompson Palm Springs 미드센추리 모던 감성의 로비 공간"
+                    width="1200"
+                    height="900"
+                    loading="lazy"
+                  />
+                  <span class="timeline-day-chip">3일차 · 다운타운</span>
+                </div>
+                <div class="timeline-body">
+                  <div class="step-date">11/24(화)–25(수) · 1박</div>
+                  <h3 class="step-hotel">Thompson Palm Springs</h3>
+                  <p class="step-desc">🌴 다운타운 · 맛집·포토부스</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="route-summary-bar">
+              <span class="route-total">
+                3박 숙박 합계: <strong>약 $750–850</strong> (세전) + 세금·수수료
+              </span>
+              <span class="section-note">2인 기준 · 지인 추천 숙소 2곳 조합</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. 숙소 비교 (매거진 사진 카드 + 요약 비교표) -->
+        <section class="section reveal" aria-labelledby="sec-comparison">
+          <span class="section-eyebrow">02 · Curated Stays</span>
+          <div class="section-header">
+            <h2 class="section-title" id="sec-comparison">🏨 숙소 후보 4곳 비교</h2>
+            <p class="section-note">사진 카드와 하단 요약 비교표를 함께 확인하세요</p>
+          </div>
+
+          <div class="filter-bar" role="group" aria-label="숙소 필터">
+            <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">
+              전체 (4)
+            </button>
+            <button type="button" class="filter-btn" data-filter="recommended" aria-pressed="false">
+              지인 추천 (2)
+            </button>
+            <button type="button" class="filter-btn" data-filter="hotsprings" aria-pressed="false">
+              Desert Hot Springs (3)
+            </button>
+            <button type="button" class="filter-btn" data-filter="downtown" aria-pressed="false">
+              다운타운 (1)
+            </button>
+          </div>
+
+          <!-- 숙소 매거진 사진 카드 4개 -->
+          <div class="stays-grid" id="stayCardsGrid">
+            <article class="stay-card card-hover" data-tags="recommended hotsprings">
+              <div class="stay-card-media media-zoom">
+                <img
+                  src="images/azure-palm.jpg"
+                  alt="Azure Palm Hot Springs의 100피트 야외 미네랄 온천 풀"
+                  width="860"
+                  height="640"
+                  loading="lazy"
+                />
+                <span class="rec-ribbon">👍 지인 추천</span>
+                <span class="stay-area-overlay">Desert Hot Springs</span>
+              </div>
+              <div class="stay-card-body">
+                <div class="stay-card-top">
+                  <h3 class="stay-card-title">Azure Palm Hot Springs</h3>
+                </div>
+                <div class="stay-price-box">
+                  <span class="stay-price-figure">약 $220–270</span>
+                  <span class="stay-price-unit">/ 1박(세전)</span>
+                  <span class="stay-price-example">(11월 중순 예시 세후 $256)</span>
+                </div>
+                <ul class="chip-list" aria-label="숙소 특징">
+                  <li class="feature-chip mint">성인 전용</li>
+                  <li class="feature-chip mint">100피트 미네랄 온천 풀(남캘리포니아 최장)</li>
+                  <li class="feature-chip">평점 9.1</li>
+                  <li class="feature-chip">무료주차</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="stay-card card-hover" data-tags="recommended downtown">
+              <div class="stay-card-media media-zoom">
+                <img
+                  src="images/thompson-pool.jpg"
+                  alt="산맥과 노을을 배경으로 줄무늬 파라솔이 늘어선 Thompson Palm Springs 수영장"
+                  width="1400"
+                  height="933"
+                  loading="lazy"
+                />
+                <span class="rec-ribbon">👍 지인 추천</span>
+                <span class="stay-area-overlay downtown">다운타운</span>
+              </div>
+              <div class="stay-card-body">
+                <div class="stay-card-top">
+                  <h3 class="stay-card-title">Thompson Palm Springs (Hyatt)</h3>
+                </div>
+                <div class="stay-price-box">
+                  <span class="stay-price-figure">약 $255–280</span>
+                  <span class="stay-price-unit">/ 1박(세전)</span>
+                  <span class="stay-price-example">(세후 약 $290–320)</span>
+                </div>
+                <ul class="chip-list" aria-label="숙소 특징">
+                  <li class="feature-chip pink">다운타운 도보권</li>
+                  <li class="feature-chip">반려동물 동반</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="stay-card card-hover" data-tags="hotsprings">
+              <div class="stay-card-media media-zoom">
+                <img
+                  src="images/el-morocco.jpg"
+                  alt="모로코풍 등불과 모닥불이 어우러진 El Morocco Inn &amp; Spa 야간 미네랄 풀"
+                  width="1400"
+                  height="604"
+                  loading="lazy"
+                />
+                <span class="stay-area-overlay">Desert Hot Springs</span>
+              </div>
+              <div class="stay-card-body">
+                <div class="stay-card-top">
+                  <h3 class="stay-card-title">El Morocco Inn &amp; Spa</h3>
+                </div>
+                <div class="stay-price-box">
+                  <span class="stay-price-figure">약 $173</span>
+                  <span class="stay-price-unit">/ 1박(세전)</span>
+                  <span class="stay-price-example">(세후 $194 예시)</span>
+                </div>
+                <ul class="chip-list" aria-label="숙소 특징">
+                  <li class="feature-chip">가성비</li>
+                  <li class="feature-chip mint">미네랄 풀 2개</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="stay-card card-hover" data-tags="hotsprings">
+              <div class="stay-card-media media-zoom">
+                <img
+                  src="images/two-bunch-palms.jpg"
+                  alt="나무와 자연석으로 둘러싸인 Two Bunch Palms 미네랄 그로토 온천"
+                  width="1400"
+                  height="788"
+                  loading="lazy"
+                />
+                <span class="stay-area-overlay">Desert Hot Springs</span>
+              </div>
+              <div class="stay-card-body">
+                <div class="stay-card-top">
+                  <h3 class="stay-card-title">Two Bunch Palms</h3>
+                </div>
+                <div class="stay-price-box">
+                  <span class="stay-price-figure">$295~</span>
+                  <span class="stay-price-unit">/ 1박(세전)</span>
+                  <span class="stay-price-example">(리조트피·세금 포함 약 $400)</span>
+                </div>
+                <ul class="chip-list" aria-label="숙소 특징">
+                  <li class="feature-chip">1930년 개장</li>
+                  <li class="feature-chip">77에이커</li>
+                  <li class="feature-chip mint">미네랄 그로토·머드배스</li>
+                  <li class="feature-chip mint">성인 전용</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- 하단 요약 비교표 (모바일에서는 카드/스택 형태로 표시) -->
+          <div class="sub-table-heading">
+            <h3>📋 한눈에 보는 요약 비교표</h3>
+            <span class="section-note">모바일에서는 카드 형태로 표시됩니다</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="stay-table">
+              <thead>
+                <tr>
+                  <th scope="col">숙소</th>
+                  <th scope="col">지역</th>
+                  <th scope="col">1박(세전)</th>
+                  <th scope="col">특징</th>
+                </tr>
+              </thead>
+              <tbody id="stayTableBody">
+                <tr data-tags="recommended hotsprings">
+                  <td data-label="숙소">
+                    <div class="stay-name">
+                      <span>Azure Palm Hot Springs</span>
+                      <span class="rec-badge">👍 지인 추천</span>
+                    </div>
+                  </td>
+                  <td data-label="지역">
+                    <div><span class="area-tag">Desert Hot Springs</span></div>
+                  </td>
+                  <td data-label="1박(세전)">
+                    <div>
+                      <span class="price-main">약 $220–270</span>
+                      <span class="price-sub">(11월 중순 예시 세후 $256)</span>
+                    </div>
+                  </td>
+                  <td data-label="특징">
+                    <div>
+                      성인 전용, 100피트 미네랄 온천 풀(남캘리포니아 최장), 평점 9.1, 무료주차
+                    </div>
+                  </td>
+                </tr>
+
+                <tr data-tags="recommended downtown">
+                  <td data-label="숙소">
+                    <div class="stay-name">
+                      <span>Thompson Palm Springs (Hyatt)</span>
+                      <span class="rec-badge">👍 지인 추천</span>
+                    </div>
+                  </td>
+                  <td data-label="지역">
+                    <div><span class="area-tag downtown">다운타운</span></div>
+                  </td>
+                  <td data-label="1박(세전)">
+                    <div>
+                      <span class="price-main">약 $255–280</span>
+                      <span class="price-sub">(세후 약 $290–320)</span>
+                    </div>
+                  </td>
+                  <td data-label="특징">
+                    <div>반려동물 동반, 다운타운 도보권</div>
+                  </td>
+                </tr>
+
+                <tr data-tags="hotsprings">
+                  <td data-label="숙소">
+                    <div class="stay-name">
+                      <span>El Morocco Inn &amp; Spa</span>
+                    </div>
+                  </td>
+                  <td data-label="지역">
+                    <div><span class="area-tag">Desert Hot Springs</span></div>
+                  </td>
+                  <td data-label="1박(세전)">
+                    <div>
+                      <span class="price-main">약 $173</span>
+                      <span class="price-sub">(세후 $194 예시)</span>
+                    </div>
+                  </td>
+                  <td data-label="특징">
+                    <div>가성비, 미네랄 풀 2개</div>
+                  </td>
+                </tr>
+
+                <tr data-tags="hotsprings">
+                  <td data-label="숙소">
+                    <div class="stay-name">
+                      <span>Two Bunch Palms</span>
+                    </div>
+                  </td>
+                  <td data-label="지역">
+                    <div><span class="area-tag">Desert Hot Springs</span></div>
+                  </td>
+                  <td data-label="1박(세전)">
+                    <div>
+                      <span class="price-main">$295~</span>
+                      <span class="price-sub">(리조트피 $51.84 + 숙박세 15.195% + 웰니스피 4.6% 포함 약 $400)</span>
+                    </div>
+                  </td>
+                  <td data-label="특징">
+                    <div>1930년 개장, 77에이커, 미네랄 그로토·머드배스, 성인 전용</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 4. 대안 동선 2개 -->
+        <section class="section reveal" aria-labelledby="sec-alternatives">
+          <span class="section-eyebrow">03 · Alternative Routes</span>
+          <div class="section-header">
+            <h2 class="section-title" id="sec-alternatives">🧭 대안 동선 2개</h2>
+            <p class="section-note">취향과 예산에 따라 선택 가능한 옵션</p>
+          </div>
+
+          <div class="alt-grid">
+            <article class="alt-card">
+              <div>
+                <span class="alt-label">대안 A · 온천 집중</span>
+                <h3>3박 모두 Azure Palm Hot Springs</h3>
+                <p>
+                  숙소 이동 없이 미네랄 온천 휴식에 집중하고, 다운타운은 차(약 20분)로 나들이하는 일정입니다.
+                </p>
+              </div>
+              <div class="alt-price">
+                대략 합계: 약 $660–810 (세전) + 세금·수수료 (예시 세후 기준 약 $768)
+              </div>
+            </article>
+
+            <article class="alt-card alt-budget">
+              <div>
+                <span class="alt-label">대안 B · 가성비 조합</span>
+                <h3>El Morocco 2박 + 다운타운(Thompson) 1박</h3>
+                <p>
+                  온천 2박은 가성비 좋은 El Morocco Inn &amp; Spa로 낮추고 마지막 1박만 다운타운에 머무는 구성입니다.
+                </p>
+              </div>
+              <div class="alt-price">
+                대략 합계: 약 $601–626 (세전) + 세금·수수료 (예시 세후 약 $678–708)
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 5. 현지 추천 스팟 (사진 갤러리 그리드) -->
+        <section class="section reveal" aria-labelledby="sec-spots">
+          <span class="section-eyebrow">04 · Local Highlights</span>
+          <div class="section-header">
+            <h2 class="section-title" id="sec-spots">📸 현지 추천 스팟</h2>
+            <p class="section-note">다운타운·근교에서 함께 들르기 좋은 곳</p>
+          </div>
+
+          <div class="spots-gallery">
+            <article class="spot-card card-hover">
+              <div class="spot-media media-zoom">
+                <img
+                  src="images/ace-hotel.jpg"
+                  alt="산맥과 야자수를 배경으로 펼쳐진 Ace Hotel &amp; Swim Club Palm Springs 외관과 수영장"
+                  width="1400"
+                  height="929"
+                  loading="lazy"
+                />
+                <span class="spot-category-tag">🎞️ 포토 스팟 · Ace Hotel 외관</span>
+              </div>
+              <div class="spot-body">
+                <h3>
+                  Ace Hotel 빈티지 포토부스
+                  <span class="rec-badge">지인 추천</span>
+                </h3>
+                <p>1층 바 쪽에 위치, 비숙박객도 이용 가능하며 실제 필름·약품 현상 방식으로 인화됩니다.</p>
+              </div>
+            </article>
+
+            <article class="spot-card card-hover">
+              <div class="spot-media media-zoom">
+                <img
+                  src="images/farm.jpg"
+                  alt="하얀 중정 아치와 민트색 파라솔이 어우러진 브런치 레스토랑 FARM 야외 공간"
+                  width="1400"
+                  height="788"
+                  loading="lazy"
+                />
+                <span class="spot-category-tag">🥐 브런치</span>
+              </div>
+              <div class="spot-body">
+                <h3>
+                  브런치 FARM
+                  <span class="rec-badge">지인 추천</span>
+                </h3>
+                <p>프랑스 시골풍 레스토랑으로 여유로운 오전 브런치 코스로 좋습니다.</p>
+              </div>
+            </article>
+
+            <article class="spot-card card-hover">
+              <div class="spot-media media-zoom">
+                <img
+                  src="images/workshop.jpg"
+                  alt="노출 콘크리트 부스와 따뜻한 바 조명이 인상적인 Workshop Kitchen + Bar 실내"
+                  width="1400"
+                  height="933"
+                  loading="lazy"
+                />
+                <span class="spot-category-tag">🍽️ 디너</span>
+              </div>
+              <div class="spot-body">
+                <h3>
+                  디너 Workshop Kitchen + Bar
+                  <span class="rec-badge">지인 추천</span>
+                </h3>
+                <p>독특한 인테리어와 제철 메뉴를 선보이는 저녁 식사 스팟입니다.</p>
+              </div>
+            </article>
+
+            <article class="spot-card card-hover">
+              <div class="spot-media media-zoom">
+                <img
+                  src="images/palm-canyon.jpg"
+                  alt="인디언 캐니언스 개울가를 따라 야자수가 우거진 사막 오아시스 풍경"
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                />
+                <span class="spot-category-tag">🌴 오아시스 트레일</span>
+              </div>
+              <div class="spot-body">
+                <h3>
+                  Palm Canyon Trailhead
+                  <span class="rec-badge">지인 추천</span>
+                </h3>
+                <p>사막 속 야자수 오아시스 풍경을 걸으며 만날 수 있는 트레일 코스입니다.</p>
+              </div>
+            </article>
+
+            <article class="spot-card spot-featured card-hover">
+              <div class="spot-media media-zoom">
+                <img
+                  src="images/good-house.jpg"
+                  alt="노란 선베드와 파라솔이 놓인 The Good House 야외 온천 수영장"
+                  width="1200"
+                  height="798"
+                  loading="lazy"
+                />
+                <span class="spot-category-tag">♨️ 데이패스 온천</span>
+              </div>
+              <div class="spot-body">
+                <h3>
+                  데이패스 옵션: The Good House
+                </h3>
+                <p>1인 약 $50 — 온천 숙소에 숙박하지 않아도 낮 시간 동안 온천을 이용할 수 있습니다.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 6. 주의사항 -->
+        <section class="section reveal" aria-labelledby="sec-cautions">
+          <span class="section-eyebrow">05 · Booking Notes</span>
+          <div class="section-header">
+            <h2 class="section-title" id="sec-cautions">⚠️ 예약 전 주의사항</h2>
+          </div>
+
+          <div class="caution-box">
+            <ul class="caution-list">
+              <li><strong>숙박세·리조트피 별도</strong>: 표기된 기본 1박 요금 외에 현지 숙박세 및 리조트피가 추가됩니다.</li>
+              <li><strong>추수감사절 성수기 변동</strong>: 11/26(목) 추수감사절 전후로 수요가 몰려 가격이 상승할 수 있습니다.</li>
+              <li><strong>기준일 안내</strong>: 모든 가격은 <strong>2026-10-26 기준</strong> 예약사이트 스냅샷으로 실시간 요금이 아니므로, 실제 예약 전 최종 금액을 재확인해 주세요.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 7. 출처 링크 목록 + 사진 출처 -->
+        <section class="section reveal" aria-labelledby="sec-sources">
+          <span class="section-eyebrow">06 · References &amp; Credits</span>
+          <div class="section-header">
+            <h2 class="section-title" id="sec-sources">🔗 조사 출처 링크</h2>
+            <p class="section-note">2026-10-26 기준 확인 링크</p>
+          </div>
+
+          <div class="sources-box">
+            <h3 class="sources-subhead">가격·숙소 조사 출처</h3>
+            <ol class="sources-list">
+              <li>
+                <a
+                  href="https://www.kayak.com/Desert-Hot-Springs-Hotels-Azure-Palm-Hot-Springs.7431451.ksp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.kayak.com/Desert-Hot-Springs-Hotels-Azure-Palm-Hot-Springs.7431451.ksp
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.travelocity.com/The-Grotto-At-Two-Bunch-Palms-Resort-Spa-Hotels.0-l553248621532641662-0.Travel-Guide-Filter-Hotels"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.travelocity.com/The-Grotto-At-Two-Bunch-Palms-Resort-Spa-Hotels.0-l553248621532641662-0.Travel-Guide-Filter-Hotels
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://it.hotels.com/ho3432184608/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://it.hotels.com/ho3432184608/
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.expedia.com/desert-hot-springs-hotels-spa-hotel.0-0-d6748-tspahotel.travel-guide-filter-hotels"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.expedia.com/desert-hot-springs-hotels-spa-hotel.0-0-d6748-tspahotel.travel-guide-filter-hotels
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.visitgreaterpalmsprings.com/blog/post/the-wondrous-hot-water-spas-of-desert-hot-springs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.visitgreaterpalmsprings.com/blog/post/the-wondrous-hot-water-spas-of-desert-hot-springs/
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.palmspringslife.com/8-wonderous-spa-hotels-in-greater-palm-springs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.palmspringslife.com/8-wonderous-spa-hotels-in-greater-palm-springs/
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://readhotelsabovepar.com/p/two-bunch-palms-hot-springs-resort-review"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://readhotelsabovepar.com/p/two-bunch-palms-hot-springs-resort-review
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://twobunchpalms.com/faq/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://twobunchpalms.com/faq/
+                </a>
+              </li>
+            </ol>
+
+            <hr class="sources-divider" />
+
+            <h3 class="sources-subhead">사진 출처</h3>
+            <ul class="sources-list">
+              <li>
+                <strong>히어로 (<code>images/hero.jpg</code>)</strong> — Visit Greater Palm Springs 공식 관광청 이미지 (© Visit Greater Palm Springs):
+                <a
+                  href="https://www.visitgreaterpalmsprings.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.visitgreaterpalmsprings.com/
+                </a>
+              </li>
+              <li>
+                <strong>Azure Palm Hot Springs 미네랄 풀 (<code>images/azure-palm.jpg</code>)</strong> — Azure Palm Hot Springs 공식 사이트 대표 이미지 (© Azure Palm Hot Springs Resort &amp; Day Spa Oasis):
+                <a
+                  href="https://azurepalmhotsprings.com/wp-content/uploads/2025/09/Largest-Mineral-Water-Pool-in-Southern-California.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://azurepalmhotsprings.com/
+                </a>
+              </li>
+              <li>
+                <strong>Azure Palm Hot Springs 야외 온천 욕조 (<code>images/azure-oasis.jpg</code>)</strong> — Visit Greater Palm Springs 공식 리스팅 이미지 (© Azure Palm Hot Springs / Visit Greater Palm Springs):
+                <a
+                  href="https://www.visitgreaterpalmsprings.com/listing/azure-palm-hot-springs-resort-%26-day-spa-oasis/35381/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.visitgreaterpalmsprings.com/listing/azure-palm-hot-springs-resort-%26-day-spa-oasis/35381/
+                </a>
+              </li>
+              <li>
+                <strong>Thompson Palm Springs 수영장 (<code>images/thompson-pool.jpg</code>)</strong> — Visit Greater Palm Springs 공식 리스팅 대표 이미지 (© Thompson Palm Springs / Hyatt, via Visit Greater Palm Springs):
+                <a
+                  href="https://www.visitgreaterpalmsprings.com/listing/thompson-palm-springs/29258/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.visitgreaterpalmsprings.com/listing/thompson-palm-springs/29258/
+                </a>
+              </li>
+              <li>
+                <strong>Thompson Palm Springs 로비 (<code>images/thompson-lobby.jpg</code>)</strong> — Visit Palm Springs 공식 리스팅 대표 이미지 (© Thompson Palm Springs / Hyatt, via Visit Palm Springs):
+                <a
+                  href="https://visitpalmsprings.com/listing/thompson-palm-springs/870/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://visitpalmsprings.com/listing/thompson-palm-springs/870/
+                </a>
+              </li>
+              <li>
+                <strong>El Morocco Inn &amp; Spa (<code>images/el-morocco.jpg</code>)</strong> — El Morocco Inn &amp; Spa 공식 사이트 갤러리 (© El Morocco Inn &amp; Spa):
+                <a
+                  href="https://www.elmoroccoinn.com/wp-content/uploads/2015/03/El-morocco-inn-night-pool.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.elmoroccoinn.com/
+                </a>
+              </li>
+              <li>
+                <strong>Two Bunch Palms 그로토 (<code>images/two-bunch-palms.jpg</code>)</strong> — Visit Greater Palm Springs 공식 가이드 수록 사진 (© Two Bunch Palms / Visit Greater Palm Springs):
+                <a
+                  href="https://www.visitgreaterpalmsprings.com/blog/post/the-wondrous-hot-water-spas-of-desert-hot-springs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.visitgreaterpalmsprings.com/blog/post/the-wondrous-hot-water-spas-of-desert-hot-springs/
+                </a>
+              </li>
+              <li>
+                <strong>Ace Hotel &amp; Swim Club Palm Springs (<code>images/ace-hotel.jpg</code>)</strong> — Ace Hotel Palm Springs 공식 사이트 대표 이미지 (© Ace Hotel &amp; Swim Club Palm Springs):
+                <a
+                  href="https://acehotel.com/palm-springs/wp-content/uploads/sites/6/2025/03/Ace-Pool-1.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://acehotel.com/palm-springs/
+                </a>
+              </li>
+              <li>
+                <strong>FARM 레스토랑 (<code>images/farm.jpg</code>)</strong> — FARM Palm Springs 공식 사이트 대표 이미지 (© FARM Palm Springs):
+                <a
+                  href="https://www.farmpalmsprings.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.farmpalmsprings.com/
+                </a>
+              </li>
+              <li>
+                <strong>Workshop Kitchen + Bar (<code>images/workshop.jpg</code>)</strong> — Workshop Kitchen + Bar 공식 사이트 대표 이미지 (© Workshop Kitchen + Bar):
+                <a
+                  href="https://www.workshopkitchenbar.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.workshopkitchenbar.com/
+                </a>
+              </li>
+              <li>
+                <strong>Palm Canyon / Indian Canyons (<code>images/palm-canyon.jpg</code>)</strong> — Wikimedia Commons, <em>Indian Canyons - panoramio.jpg</em> (© David Balmer, CC BY 3.0):
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Indian_Canyons_-_panoramio.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://commons.wikimedia.org/wiki/File:Indian_Canyons_-_panoramio.jpg
+                </a>
+              </li>
+              <li>
+                <strong>The Good House (<code>images/good-house.jpg</code>)</strong> — The Good House 공식 사이트 이미지 (© The Good House):
+                <a
+                  href="https://www.welcometothegoodhouse.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.welcometothegoodhouse.com/
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        // 1. 테마 토글 (기본값은 시스템 prefers-color-scheme 존중)
+        const root = document.documentElement;
+        const themeToggle = document.getElementById("themeToggle");
+        if (themeToggle) {
+          themeToggle.addEventListener("click", function () {
+            const currentAttr = root.getAttribute("data-theme");
+            const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const isCurrentlyDark =
+              currentAttr === "dark" || (!currentAttr && systemDark);
+            root.setAttribute("data-theme", isCurrentlyDark ? "light" : "dark");
+          });
+        }
+
+        // 2. 숙소 비교 필터 (매거진 사진 카드 + 하단 요약 비교표 동시 연동)
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll("#stayCardsGrid .stay-card");
+        const rows = document.querySelectorAll("#stayTableBody tr");
+
+        filterButtons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            const filter = btn.getAttribute("data-filter");
+            filterButtons.forEach(function (b) {
+              b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+            });
+
+            function applyFilter(elements) {
+              elements.forEach(function (el) {
+                const tags = (el.getAttribute("data-tags") || "").split(" ");
+                if (filter === "all" || tags.indexOf(filter) !== -1) {
+                  el.classList.remove("hidden-item");
+                } else {
+                  el.classList.add("hidden-item");
+                }
+              });
+            }
+
+            applyFilter(cards);
+            applyFilter(rows);
+          });
+        });
+
+        // 3. 부드러운 스크롤 등장 애니메이션 (IntersectionObserver, prefers-reduced-motion 존중)
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealTargets = document.querySelectorAll(".reveal");
+
+        if (!prefersReducedMotion && "IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            function (entries, obs) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.01, rootMargin: "0px 0px -16px 0px" }
+          );
+
+          revealTargets.forEach(function (el) {
+            observer.observe(el);
+          });
+        } else {
+          revealTargets.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
